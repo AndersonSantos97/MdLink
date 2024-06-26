@@ -33,12 +33,26 @@ class loginController extends Controller
     }
 
     public function authenticated(Request $request, $user){
-        return redirect()->route('admin.menu');
+        //return redirect()->route('admin.menu');
         // if($user->rol =='1'){
         //     return redirect()->route('admin.menu');
         // }else{
         //     return redirect()->view('Menuvisor');
         // } 
+
+        switch($user->rol){
+            case 1:
+                return redirect()->route('admin.menu');
+            
+            case 2:
+                return redirect()->route('moder.menu');
+
+            case 3:
+                return redirect()->route('visor.menu');
+            
+            default:
+                redirect()->route('home');
+        }
     }
 
     public function logout(Request $request){
