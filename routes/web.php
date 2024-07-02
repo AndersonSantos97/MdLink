@@ -40,10 +40,10 @@ Route::get('/usuarios',[userController::class,'usersview'])->name('user.view');
 Route::post('/usuarios/save',[UserController::class,'store'])->name('users.save');
 
 //Ruta para actualizar el usuario
-Route::put('usuaios/update/{id}',[UserController::class,'update'])->name('users.update');
+Route::put('usuarios/update/{id}',[UserController::class,'update'])->name('users.update');
 
 //Ruta para inhabilitar usuario
 Route::put('usuarios/delete/{id}',[UserController::class,'delete'])->name('users.delete');
 
 //ruta para empleados
-Route::get('/empleados',[empleadoController::class,'emp'])->name('Empleados');
+Route::get('/empleados',[empleadoController::class,'emp'])->name('Empleados.view');
