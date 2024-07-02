@@ -21,7 +21,7 @@
             </p>
             <div class="flex flex-col items-center justify-center gap-2 mx-auto mt-8 md:flex-row">
               <button class="inline-flex items-center justify-center w-full h-12 gap-3 px-5 py-3 font-medium text-white duration-200 bg-gray-900 md:w-auto rounded-xl hover:bg-gray-700 focus:ring-2 focus:ring-offset-2 focus:ring-black" aria-label="Primary action">
-                Agregar Empleado
+                <a href="{{ route('Empleados.view')}}">Agregar Empleado</a>
               </button>
               <button class="inline-flex items-center justify-center w-full h-12 gap-3 px-5 py-3 font-medium text-white duration-200 bg-gray-900 md:w-auto rounded-xl hover:bg-gray-700 focus:ring-2 focus:ring-offset-2 focus:ring-black" aria-label="Primary action">
                 Consultar
