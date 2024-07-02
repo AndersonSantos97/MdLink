@@ -43,6 +43,11 @@ class userController extends Controller
                 return $e->getMessage();
             }
             
+            $users = User::all();
+            $roles = roles::all();
+            return view('users.index', compact('users', 'roles'));
+
+
         }
 
         //crear un nuevo usuario
