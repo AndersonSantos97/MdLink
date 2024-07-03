@@ -27,7 +27,8 @@
         </div>
       
         <div class="mt-10 sm:mx-auto sm:w-full sm:max-w-sm">
-          <form id="passwordForm" class="space-y-6" method="POST">
+          <form action="{{ route('users.changepass')}}"  id="passwordForm" class="space-y-6" method="POST">
+            @csrf
             <div>
               <div class="flex items-center justify-between">
                 <label for="password" class="block text-sm font-medium leading-6 text-gray-900">Contraseña Nueva</label>
@@ -90,7 +91,7 @@
 
       if (valid) {
         // Aquí puedes enviar el formulario, por ejemplo usando AJAX o descomentando la línea siguiente
-        // this.submit();
+        this.submit();
       }
     });
 

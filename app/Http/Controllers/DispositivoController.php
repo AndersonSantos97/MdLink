@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Dispositivo;
 use Illuminate\Http\Request;
 
 class DispositivoController extends Controller
@@ -9,6 +10,7 @@ class DispositivoController extends Controller
     // Mostrar dispositivos
     public function index()
     {
+        
         try {
             $dispositivo = Dispositivo::all();
             return view('dispositivo.index', compact('dispositivo'));

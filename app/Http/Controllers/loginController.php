@@ -16,7 +16,7 @@ class loginController extends Controller
     public function login(loginRequest $request){
         try{
             $credentials =$request->getCredentials();
-
+            
             if(!Auth::validate($credentials)){
                 return redirect()->route('home')->withErrors(['auth' => 'Credenciales incorrectas']);
             }
@@ -40,19 +40,24 @@ class loginController extends Controller
         //     return redirect()->view('Menuvisor');
         // } 
 
-        switch($user->rol){
-            case 1:
-                return redirect()->route('admin.menu');
-            
-            case 2:
-                return redirect()->route('moder.menu');
-
-            case 3:
-                return redirect()->route('visor.menu');
-            
-            default:
-                redirect()->route('home');
+        if($user->estado ==3){
+            return redirect()->route('users.change');
+        }elseif($user->estado==1){
+            switch($user->rol){
+                case 1:
+                    return redirect()->route('admin.menu');
+                
+                case 2:
+                    return redirect()->route('moder.menu');
+    
+                case 3:
+                    return redirect()->route('visor.menu');
+                
+                default:
+                    redirect()->route('home');
+            }
         }
+
     }
 
     public function logout(Request $request){

@@ -45,5 +45,10 @@ Route::put('usuaios/update/{id}',[UserController::class,'update'])->name('users.
 //Ruta para inhabilitar usuario
 Route::put('usuarios/delete/{id}',[UserController::class,'delete'])->name('users.delete');
 
+//vista para cambiar contra
+Route::get('/change',[userController::class,'change'])->name('users.change');
+//Ruta para cambiar contraseña
+Route::post('/changepass',[userController::class,'passChange'])->name('users.changepass');
+
 //ruta para empleados
 Route::get('/empleados',[empleadoController::class,'emp'])->name('Empleados');

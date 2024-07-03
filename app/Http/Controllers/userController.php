@@ -7,6 +7,7 @@ use App\Models\User;
 use Carbon\Carbon;
 use Exception;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
 
@@ -51,7 +52,7 @@ class userController extends Controller
             try{
                 $usuario = new User([
                     'username'=>$request->usu_nombre,
-                    'estado'=>1,
+                    'estado'=>3,
                     'password'=> Hash::make($request->usu_password),
                     'rol' => $request->usu_rol,
                     'created_at'=>Carbon::now(),
@@ -91,6 +92,7 @@ class userController extends Controller
         
                 if($request->has('usu_password')){
                     $usuario->password = Hash::make($request->usu_password);
+                    $usuario->estado = 3;
                 }
         
                 if($request->has('usu_rol')){
@@ -124,6 +126,43 @@ class userController extends Controller
                 return redirect()->route('user.view')->with('success','usuario actualizado con exito');
             }catch(Exception $e){
                 return redirect()->route('user.view')->with('Error','Error al actualizar el usuario: '.$e->getMessage());
+
+            }
+        }
+
+        public function change(){
+            try{
+                return view('CambiarContra');
+            }catch(Exception $e){
+                return view('Login');
+            }
+        }
+
+        public function passChange(Request $request){
+            try{
+                $usuario = User::find(Auth()->user()->id);
+                $currentState = Auth()->user()->estado;
+                $request->validate([
+                    'username' => 'nullable|string|max:8',
+                    'password' => 'nullable|string|max:255'
+                ]);
+        
+                if($request->has('password')){
+                    $usuario->password = Hash::make($request->password);
+                }
+                $usuario->estado = 1;
+                $usuario->updated_at = Carbon::now();
+
+                $usuario->save();
+
+                Auth::logout();
+
+                $request->session()->invalidate();
+                $request->session()->regenerate();
+        
+                return redirect()->route('home');
+                //return redirect()->route('user.view')->with('success','usuario actualizado con exito');
+            }catch(Exception $e){
 
             }
         }
