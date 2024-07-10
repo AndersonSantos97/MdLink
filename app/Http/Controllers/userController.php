@@ -90,7 +90,12 @@ class userController extends Controller
                 //     $usuario->USU_ESTADO = $request->USU_ESTADO;
                 // }
         
-                if($request->has('usu_password')){
+                // if($request->has('usu_password')){
+                //     $usuario->password = Hash::make($request->usu_password);
+                    
+                // }
+
+                if($request->filled('usu_password')){
                     $usuario->password = Hash::make($request->usu_password);
                     $usuario->estado = 3;
                 }
