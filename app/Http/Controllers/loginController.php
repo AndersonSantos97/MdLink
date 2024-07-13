@@ -45,7 +45,7 @@ class loginController extends Controller
         }elseif($user->estado==1){
             switch($user->rol){
                 case 1:
-                    return redirect()->route('admin.menu');
+                    return redirect()->route('punch.view');
                 
                 case 2:
                     return redirect()->route('moder.menu');
