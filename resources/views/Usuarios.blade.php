@@ -33,8 +33,7 @@
         <input type="hidden" name="usu_id" id="usu_id">
 
         <div class="p-8 bg-white shadow-lg rounded-lg w-full max-w-7xl">
-
-          <div class="mb-4">
+        <div class="mb-4">
             <label for="usu_nombre" class="block text-sm font-medium text-gray-700">Nombre de Usario</label>
             <input name="usu_nombre" type="text" id="usu_nombre" class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm">
         </div>
@@ -67,9 +66,10 @@
             <button type="button" onclick="deleteUser('delete')" class="inline-flex items-center justify-center w-full h-12 gap-3 px-5 py-3 font-medium text-white duration-200 bg-gray-900 md:w-auto rounded-xl hover:bg-gray-700 focus:ring-2 focus:ring-offset-2 focus:ring-black" aria-label="Primary action">
               Eliminar
             </button>
-              <button class="inline-flex items-center justify-center w-full h-12 gap-3 px-5 py-3 font-medium text-white duration-200 bg-gray-900 md:w-auto rounded-xl hover:bg-gray-700 focus:ring-2 focus:ring-offset-2 focus:ring-black" aria-label="Primary action">
+            <button type="button" onclick="back('back')" class="inline-flex items-center justify-center w-full h-12 gap-3 px-5 py-3 font-medium text-white duration-200 bg-gray-900 md:w-auto rounded-xl hover:bg-gray-700 focus:ring-2 focus:ring-offset-2 focus:ring-black" aria-label="Primary action">
               Regresar
             </button>
+
             <button type="button" onclick="logOut('logout')" class="inline-flex items-center justify-center w-full h-12 gap-3 px-5 py-3 font-medium duration-200 bg-gray-100 md:w-auto rounded-xl hover:bg-gray-200 focus:ring-2 focus:ring-offset-2 focus:ring-blue-500" aria-label="Secondary action">
               Salir
             </button>
@@ -180,6 +180,16 @@
       }else{
         form.action = '{{ route("users.save")}}';
         form.method = 'POST';
+      }
+
+      form.submit();
+    }
+    function back(action){
+      const form = document.getElementById('userForm');
+      const methodField = document.getElementById('method');
+      if(action == 'back'){
+        form.action = "{{ route('admin.menu')}}"
+        methodField.value = 'GET';
       }
 
       form.submit();

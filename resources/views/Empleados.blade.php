@@ -59,10 +59,9 @@
           <label for="role" class="block text-sm font-medium text-gray-700">Horario</label>
       <select id="role" class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm">
         <option value="" disabled selected>Asignacion de Horario</option>
-        <option value="admin">A (6:00 am - 4:00 pm)</option>
-        <option value="moderator">B (7:30 am - 5:00 pm)</option>
-        <option value="viewer">C (8:00 am - 4:00 pm)</option>
-       
+        @foreach($horarios as $horario)
+            <option value="{{ $horario->id }}">{{ $horario->name }}</option>
+        @endforeach
       </select>
  </div>
         <div class="w-1/2">
