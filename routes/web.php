@@ -52,7 +52,7 @@ Route::get('/change',[userController::class,'change'])->name('users.change');
 Route::post('/changepass',[userController::class,'passChange'])->name('users.changepass');
 
 //ruta para empleados
-//Route::get('/empleados',[empleadoController::class,'emp'])->name('Empleados');
+Route::get('/empleados',[empleadoController::class,'index'])->name('Empleados');
 
 //ruta buscar empleado por ID
 Route::get('/empleados/buscar/{id}',[empleadoController::class,'buscarPorId'])->name('Empleados.id');
