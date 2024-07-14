@@ -77,6 +77,46 @@ class UserController extends Controller
             if (!$usuario) {
                 return redirect()->route('user.view')->with('error', 'Usuario no encontrado');
             }
+    
+        }
+        //Actualizar un usuario existente
+        public function update(Request $request,$id){
+    
+            try{
+                $usuario = User::find($id);
+                if(!$usuario){
+                    return redirect()->route('user.view')->with('error','Usuario no actualizado');
+                }
+        
+                $request->validate([
+                    'username' => 'nullable|string|max:8',
+                    'password' => 'nullable|string|max:255',
+                    'rol' => 'nullable|integer',
+                ]);
+        
+                if($request->has('usu_nombre')){
+                    $usuario->username = $request->usu_nombre;
+                }
+        
+                // if($request->has('USU_ESTADO')){
+                //     $usuario->USU_ESTADO = $request->USU_ESTADO;
+                // }
+        
+                // if($request->has('usu_password')){
+                //     $usuario->password = Hash::make($request->usu_password);
+                    
+                // }
+
+                if($request->filled('usu_password')){
+                    $usuario->password = Hash::make($request->usu_password);
+                    $usuario->estado = 3;
+                }
+        
+                if($request->has('usu_rol')){
+                    $usuario->rol = $request->usu_rol;
+                }
+                
+                $usuario->updated_at = Carbon::now();
 
             $request->validate([
                 'usu_nombre' => 'nullable|string|max:255',

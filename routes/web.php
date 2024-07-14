@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\empleadoController;
 use App\Http\Controllers\loginController;
+use App\Http\Controllers\punchController;
 use App\Http\Controllers\RolesController;
 use App\Http\Controllers\userController;
 use Illuminate\Support\Facades\Route;
@@ -53,6 +54,7 @@ Route::post('/changepass',[userController::class,'passChange'])->name('users.cha
 //ruta para empleados
 Route::get('/empleados',[empleadoController::class,'emp'])->name('Empleados');
 
+<<<<<<< HEAD
 //ruta buscar empleado por ID
 Route::get('/empleados/buscar/{id}',[empleadoController::class,'buscarPorId'])->name('Empleados.id');
 
@@ -77,3 +79,10 @@ Route::put('/dispositivo/update/{id}',[DispositivoController::class,'update'])->
 
 // ruta para deshabilitar un departamento
 Route::put('/dispositivo/delete/{id}',[DispositivoController::class,'delete'])->name('dispositivo.delete');
+=======
+//Ruta para la consulta de punches
+Route::get('/punches',[punchController::class,'viewPunch'])->name('punch.view');
+
+//Ruta para el metodo de consulta
+Route::get('/punches/search',[punchController::class,'searchDate'])->name('punch.search');
+>>>>>>> 2ce67319ca6f89b7545efbc30f4d02d6d3e1ab22

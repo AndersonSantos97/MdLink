@@ -184,6 +184,10 @@
 
       form.submit();
     }
+<<<<<<< HEAD
+=======
+
+>>>>>>> 2ce67319ca6f89b7545efbc30f4d02d6d3e1ab22
     function back(action){
       const form = document.getElementById('userForm');
       const methodField = document.getElementById('method');
@@ -194,6 +198,10 @@
 
       form.submit();
     }
+<<<<<<< HEAD
+=======
+
+>>>>>>> 2ce67319ca6f89b7545efbc30f4d02d6d3e1ab22
   </script>
 
 
