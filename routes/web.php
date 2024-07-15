@@ -1,6 +1,8 @@
 <?php
 
+use App\Http\Controllers\DispositivoController;
 use App\Http\Controllers\empleadoController;
+use App\Http\Controllers\exportController;
 use App\Http\Controllers\loginController;
 use App\Http\Controllers\punchController;
 use App\Http\Controllers\RolesController;
@@ -83,3 +85,6 @@ Route::get('/punches',[punchController::class,'viewPunch'])->name('punch.view');
 
 //Ruta para el metodo de consulta
 Route::get('/punches/search',[punchController::class,'searchDate'])->name('punch.search');
+
+//Ruta para guardar archivo de excel
+Route::get('/punches/export',[exportController::class,'export'])->name('punch.export');

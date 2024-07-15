@@ -70,15 +70,17 @@ class UserController extends Controller
     }
 
     // Update an existing user
-    public function update(Request $request, $id)
-    {
-        try {
-            $usuario = User::find($id);
-            if (!$usuario) {
-                return redirect()->route('user.view')->with('error', 'Usuario no encontrado');
-            }
+    // public function update(Request $request, $id)
+    // {
+    //     try {
+    //         $usuario = User::find($id);
+    //         if (!$usuario) {
+    //             return redirect()->route('user.view')->with('error', 'Usuario no encontrado');
+    //         }
     
-        }
+    //     }
+    // }
+
         //Actualizar un usuario existente
         public function update(Request $request,$id){
     
@@ -143,6 +145,7 @@ class UserController extends Controller
         } catch (Exception $e) {
             return redirect()->route('user.view')->with('error', 'Error al actualizar el usuario: ' . $e->getMessage());
         }
+    
     }
 
     // Disable an existing user

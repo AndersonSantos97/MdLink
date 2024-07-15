@@ -39,19 +39,30 @@
           <div class="flex justify-between mb-4">
             <div class="flex items-center space-x-2">
               <label for="from-date" class="block text-sm font-medium text-gray-700">De</label>
-              <input type="date" id="from-date" name="from_date" value="2024-01-05" class="block w-full border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm">
+              <input type="date" id="from-date" name="from_date" value="{{ $fromDate ?? '2024-01-05'}}" class="block w-full border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm">
             </div>
             <div class="flex items-center space-x-2">
               <label for="to-date" class="block text-sm font-medium text-gray-700">A</label>
-              <input type="date" id="to-date" name="to_date" value="2024-01-31" class="block w-full border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm">
+              <input type="date" id="to-date" name="to_date" value="{{ $toDate ?? '2024-01-31'}}" class="block w-full border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm">
             </div>
             <button type="button" onclick="submitForm('search')" class="inline-flex items-center justify-center w-full h-12 gap-3 px-5 py-3 font-medium text-white duration-200 bg-gray-900 md:w-auto rounded-xl hover:bg-gray-700 focus:ring-2 focus:ring-offset-2 focus:ring-black" aria-label="Primary action">
               Consultar
             </button>
-            <button type="button" onclick="download('download')" class="inline-flex items-center justify-center w-full h-12 gap-3 px-5 py-3 font-medium text-white duration-200 bg-gray-900 md:w-auto rounded-xl hover:bg-gray-700 focus:ring-2 focus:ring-offset-2 focus:ring-black" aria-label="Primary action">
+            {{-- <button type="button" onclick="download('download')" class="inline-flex items-center justify-center w-full h-12 gap-3 px-5 py-3 font-medium text-white duration-200 bg-gray-900 md:w-auto rounded-xl hover:bg-gray-700 focus:ring-2 focus:ring-offset-2 focus:ring-black" aria-label="Primary action">
               Descargar
-            </button>
+            </button> --}}
           </div>
+        </form>
+
+        <form id="downloadForm" action="{{ route('punch.export') }}" method="GET">
+          @csrf
+          @if (isset($fromDate) && isset($toDate))
+            <input type="hidden" name="from_date" value="{{ $fromDate }}">
+            <input type="hidden" name="to_date" value="{{ $toDate }}">
+          @endif
+          <button type="submit" class="inline-flex items-center justify-center w-full h-12 gap-3 px-5 py-3 font-medium text-white duration-200 bg-gray-900 md:w-auto rounded-xl hover:bg-gray-700 focus:ring-2 focus:ring-offset-2 focus:ring-black" aria-label="Primary action">
+              Descargar
+          </button>
         </form>
 
         <form id="logoutForm" action="{{ route('user.logout')}}" method="POST">
